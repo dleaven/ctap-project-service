@@ -1,26 +1,47 @@
-name := "ctap-project-service"
+ThisBuild / version       := "0.0.1-SNAPSHOT"
+ThisBuild / scalaVersion  := "2.13.3"
+ThisBuild / organization  := "ch.dleaven.ctap"
+ThisBuild / useSuperShell := false
 
-organization := "ch.dleaven.ctap"
+val subRootPackage = "ch.dleaven.ctap.project"
 
-version := "0.1"
+lazy val `ctap-project-service` = project
+  .in(file("."))
+  .aggregate(application, infrastructure, domain, view)
+  .settings(name := "ctap-project-service")
 
-scalaVersion := "2.13.3"
+lazy val application = project
+  .in(file("ctap-project-application"))
+  .dependsOn(domain % classpathDependencies)
+  .dependsOn(view % classpathDependencies)
+  .dependsOn(infrastructure % classpathDependencies)
+  .settings(
+    mainClass in (Compile, run) := Some(s"$subRootPackage.MainApp"),
+    Dependencies.application
+  )
 
-lazy val akkaVersion = "2.6.8"
+lazy val infrastructure = project
+  .in(file("ctap-project-infrastructure"))
+  .dependsOn(domain % classpathDependencies)
+  .dependsOn(view % classpathDependencies)
+  .settings(
+    Dependencies.infrastructure
+  )
 
-libraryDependencies ++= Seq(
-  // Compile dependencies
-  "ch.qos.logback" % "logback-classic" % "1.2.3",
-  "com.lightbend.akka" %% "akka-persistence-jdbc" % "4.0.0",
-  "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion,
-  "com.typesafe.akka" %% "akka-stream-typed" % akkaVersion,
-  "com.typesafe.akka" %% "akka-persistence-typed" % akkaVersion,
-  "com.typesafe.akka" %% "akka-persistence-query" % akkaVersion,
-  "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion,
-  "com.typesafe.akka" %% "akka-http" % "10.2.0-M1",
-  "org.flywaydb" % "flyway-core" % "6.5.3",
-  "org.postgresql" % "postgresql" % "42.2.12",
-  // Test dependencies
-  "com.typesafe.akka" %% "akka-actor-testkit-typed" % akkaVersion % Test,
-  "org.scalatest" %% "scalatest" % "3.1.0" % Test
-)
+lazy val domain = project
+  .in(file("ctap-project-domain"))
+  .settings(
+    Dependencies.domain
+  )
+
+lazy val view = project
+  .in(file("ctap-project-view"))
+  .settings(
+    Dependencies.view
+  )
+
+lazy val classpathDependencies: String =
+  "compile->compile;test->test"
+
+// Command aliases
+addCommandAlias("run", "application/run")

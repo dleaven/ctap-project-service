@@ -1,25 +1,25 @@
+import sbt.Keys._
 import sbt._
-import Keys._
 
 object Dependencies {
 
-  val akkaVersion                = "2.6.8"
-  val akkaHttpVersion            = "10.2.0-M1"
+  val akkaVersion = "2.6.10"
+  val akkaHttpVersion = "10.2.2"
   val akkaPersistenceJdbcVersion = "4.0.0"
-  val flywayVersion              = "6.5.3"
-  val logbackVersion             = "1.2.3"
-  val postgreSqlVersion          = "42.2.12"
-  val scalaTestVersion           = "3.1.0"
+  val flywayVersion = "7.3.2"
+  val logbackVersion = "1.2.3"
+  val postgreSqlVersion = "42.2.18"
+  val scalaTestVersion = "3.2.3"
 
   object Compile {
-    val akkaActorTyped       = "com.typesafe.akka" %% "akka-actor-typed"       % akkaVersion
-    val akkaStreamTyped      = "com.typesafe.akka" %% "akka-stream-typed"      % akkaVersion
+    val akkaActorTyped = "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion
+    val akkaStreamTyped = "com.typesafe.akka" %% "akka-stream-typed" % akkaVersion
     val akkaPersistenceTyped = "com.typesafe.akka" %% "akka-persistence-typed" % akkaVersion
     val akkaPersistenceQuery = "com.typesafe.akka" %% "akka-persistence-query" % akkaVersion
-    val akkaHttp             = "com.typesafe.akka" %% "akka-http"              % akkaHttpVersion
-    val flyway               = "org.flywaydb"       % "flyway-core"            % flywayVersion
-    val logback              = "ch.qos.logback"     % "logback-classic"        % logbackVersion
-    val postgreSql           = "org.postgresql"     % "postgresql"             % postgreSqlVersion
+    val akkaHttp = "com.typesafe.akka" %% "akka-http" % akkaHttpVersion
+    val flyway = "org.flywaydb" % "flyway-core" % flywayVersion
+    val logback = "ch.qos.logback" % "logback-classic" % logbackVersion
+    val postgreSql = "org.postgresql" % "postgresql" % postgreSqlVersion
   }
 
   object Test {

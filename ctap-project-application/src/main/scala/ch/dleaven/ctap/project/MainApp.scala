@@ -1,8 +1,8 @@
 package ch.dleaven.ctap.project
 
-import akka.actor.typed.ActorSystem
 import com.typesafe.config.ConfigFactory
 import org.flywaydb.core.Flyway
+import org.flywaydb.core.api.output.MigrateResult
 
 object MainApp extends App {
   val config = ConfigFactory.load()
@@ -15,7 +15,7 @@ object MainApp extends App {
     dbConfig.getString("schema")
   )
 
-  def migrateDatabase(url: String, user: String, password: String, schema: String): Int = {
+  def migrateDatabase(url: String, user: String, password: String, schema: String): MigrateResult = {
     val flyway = Flyway.configure()
       .locations("classpath:database/migration")
       .baselineOnMigrate(true)
@@ -25,4 +25,3 @@ object MainApp extends App {
     flyway.migrate()
   }
 }
-

@@ -5,7 +5,7 @@ import org.flywaydb.core.Flyway
 import org.flywaydb.core.api.output.MigrateResult
 
 object MainApp extends App {
-  val config = ConfigFactory.load()
+  val config   = ConfigFactory.load()
   val dbConfig = config.getConfig("database")
 
   migrateDatabase(

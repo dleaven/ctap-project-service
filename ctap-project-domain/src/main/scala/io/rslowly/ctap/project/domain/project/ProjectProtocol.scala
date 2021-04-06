@@ -1,9 +1,9 @@
-package ch.dleaven.ctap.project.domain.project
+package io.rslowly.ctap.project.domain.project
 
 import akka.Done
 import akka.actor.typed.ActorRef
 import akka.pattern.StatusReply
-import ch.dleaven.ctap.project.domain.JsonSerializable
+import io.rslowly.ctap.project.domain.JsonSerializable
 
 object ProjectProtocol {
 

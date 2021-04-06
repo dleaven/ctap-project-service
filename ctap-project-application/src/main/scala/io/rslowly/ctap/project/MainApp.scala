@@ -1,4 +1,4 @@
-package ch.dleaven.ctap.project
+package io.rslowly.ctap.project
 
 import com.typesafe.config.ConfigFactory
 import org.flywaydb.core.Flyway

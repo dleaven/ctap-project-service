@@ -1,9 +1,9 @@
 ThisBuild / version := "0.0.1-SNAPSHOT"
 ThisBuild / scalaVersion := "2.13.4"
-ThisBuild / organization := "ch.dleaven.ctap"
+ThisBuild / organization := "io.rslowly.ctap"
 ThisBuild / useSuperShell := false
 
-val subRootPackage = "ch.dleaven.ctap.project"
+val subRootPackage = "io.rslowly.ctap.project"
 
 lazy val `ctap-project-service` = project
   .in(file("."))
@@ -21,7 +21,7 @@ lazy val `ctap-project-application` = project
   .dependsOn(`ctap-project-view` % classpathDependencies)
   .dependsOn(`ctap-project-infrastructure` % classpathDependencies)
   .settings(
-    mainClass in(Compile, run) := Some("ch.dleaven.ctap.project.MainApp"),
+    mainClass in(Compile, run) := Some("io.rslowly.ctap.project.MainApp"),
     Dependencies.application
   )
 

@@ -1,7 +1,7 @@
-package ch.dleaven.ctap.project.domain
+package io.rslowly.ctap.project.domain
 
-import ch.dleaven.ctap.project.domain.project.ProjectProtocol.{ProjectCommand, ProjectEvent}
-import ch.dleaven.ctap.project.domain.project.ProjectState.Project
+import io.rslowly.ctap.project.domain.project.ProjectProtocol.{ProjectCommand, ProjectEvent}
+import io.rslowly.ctap.project.domain.project.ProjectState.Project
 import io.bullet.borer.Codec
 import io.bullet.borer.derivation.MapBasedCodecs.deriveAllCodecs
 

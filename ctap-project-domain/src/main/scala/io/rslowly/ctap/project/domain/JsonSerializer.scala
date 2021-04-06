@@ -1,9 +1,9 @@
-package ch.dleaven.ctap.project.domain
+package io.rslowly.ctap.project.domain
 
 import akka.serialization.Serializer
-import ch.dleaven.ctap.project.domain.project.ProjectProtocol.{ProjectCommand, ProjectEvent}
-import ch.dleaven.ctap.project.domain.project.ProjectState.Project
 import io.bullet.borer.{Decoder, Json}
+import io.rslowly.ctap.project.domain.project.ProjectProtocol.{ProjectCommand, ProjectEvent}
+import io.rslowly.ctap.project.domain.project.ProjectState.Project
 
 import scala.reflect.ClassTag
 
@@ -15,9 +15,9 @@ class JsonSerializer() extends Serializer with Codecs {
 
   override def toBinary(o: AnyRef): Array[Byte] =
     o match {
-      case x: Project => Json.encode(x).toByteArray
+      case x: Project        => Json.encode(x).toByteArray
       case x: ProjectCommand => Json.encode(x).toByteArray
-      case x: ProjectEvent => Json.encode(x).toByteArray
+      case x: ProjectEvent   => Json.encode(x).toByteArray
       case _ =>
         throw new RuntimeException(s"does not support encoding of $o")
     }

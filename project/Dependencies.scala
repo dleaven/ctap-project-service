@@ -11,6 +11,7 @@ object Dependencies {
   val logbackVersion             = "1.2.3"
   val postgreSqlVersion          = "42.2.18"
   val scalaTestVersion           = "3.2.3"
+  val slf4jSimpleVersion         = "1.7.30"
 
   object Compile {
     val akkaActorTyped           = "com.typesafe.akka" %% "akka-actor-typed"            % akkaVersion
@@ -29,9 +30,10 @@ object Dependencies {
   }
 
   object Test {
-    val akkaActorTestkitTyped  = "com.typesafe.akka" %% "akka-actor-testkit-typed" % akkaVersion      % "test"
-    val akkaPersistenceTestkit = "com.typesafe.akka" %% "akka-persistence-testkit" % akkaVersion      % "test"
-    val scalaTest              = "org.scalatest"     %% "scalatest"                % scalaTestVersion % "test"
+    val akkaActorTestkitTyped  = "com.typesafe.akka" %% "akka-actor-testkit-typed" % akkaVersion        % "test"
+    val akkaPersistenceTestkit = "com.typesafe.akka" %% "akka-persistence-testkit" % akkaVersion        % "test"
+    val scalaTest              = "org.scalatest"     %% "scalatest"                % scalaTestVersion   % "test"
+    val slf4jSimple            = "org.slf4j"          % "slf4j-simple"             % slf4jSimpleVersion % "test"
   }
 
   val l = libraryDependencies
@@ -56,6 +58,7 @@ object Dependencies {
     Compile.borerCore,
     Compile.borerDerivation,
     Compile.borerCompatAkka,
+    Compile.logback,
     Test.akkaActorTestkitTyped,
     Test.akkaPersistenceTestkit,
     Test.scalaTest

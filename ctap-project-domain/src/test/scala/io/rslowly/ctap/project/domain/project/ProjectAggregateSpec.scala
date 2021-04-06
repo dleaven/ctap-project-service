@@ -1,19 +1,20 @@
-package ch.dleaven.ctap.project.domain.project
+package io.rslowly.ctap.project.domain.project
 
 import akka.Done
-import akka.actor.testkit.typed.scaladsl.ScalaTestWithActorTestKit
+import akka.actor.testkit.typed.scaladsl.{LogCapturing, ScalaTestWithActorTestKit}
 import akka.pattern.StatusReply
 import akka.persistence.testkit.scaladsl.EventSourcedBehaviorTestKit
 import akka.persistence.typed.PersistenceId
-import ch.dleaven.ctap.project.domain.project.ProjectProtocol.{ProjectCommand, ProjectEvent}
-import ch.dleaven.ctap.project.domain.project.ProjectState.Project
+import io.rslowly.ctap.project.domain.project.ProjectProtocol.{ProjectCommand, ProjectEvent}
+import io.rslowly.ctap.project.domain.project.ProjectState.Project
 import org.scalatest.BeforeAndAfterEach
 import org.scalatest.funspec.AnyFunSpecLike
 
 class ProjectAggregateSpec
     extends ScalaTestWithActorTestKit(EventSourcedBehaviorTestKit.config)
     with AnyFunSpecLike
-    with BeforeAndAfterEach {
+    with BeforeAndAfterEach
+    with LogCapturing {
 
   private val estk =
     EventSourcedBehaviorTestKit[ProjectCommand, ProjectEvent, Project](system, ProjectAggregate("1", PersistenceId("Project", "1")))
